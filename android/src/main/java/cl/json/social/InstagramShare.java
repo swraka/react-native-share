@@ -29,6 +29,7 @@ public class InstagramShare extends SingleShareIntent {
             // passing instagram://share as url option opens Publishing screen with camera view
             if (ShareIntent.hasValidKey("url", options) && options.getString("url").startsWith("instagram://")) {
                 this.getIntent().setAction(Intent.ACTION_VIEW);
+                this.getIntent().putExtra(Intent.EXTRA_TEXT, options.getString("message"));
                 this.getIntent().setData(Uri.parse(options.getString("url")));
             }
         } catch (Exception e) {
